@@ -44,7 +44,7 @@ class FamilyStructure:
     def get_member(self, id):
         # fill this method and update the return
         for m in self._members:
-            if m["id"] == int(id):
+            if m["id"] == id:
                 return m
 
         return None

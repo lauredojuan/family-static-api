@@ -38,19 +38,19 @@ def get_all_members():
     # return jsonify(response_body), 200
     response = jackson_family.get_all_members()
     if  response is None or len(response) < 1: 
-      raise APIException("There are no elements in this list", status_code=400)
+        raise APIException("There are no elements in this list", status_code=400)
     return jsonify({"family": jackson_family.get_all_members()}), 200
 
 
-@app.route('/members/<int:id>', methods=['GET'])
+@app.route('/members/<id>', methods=['GET'])
 def get_member(id):
     
     response = jackson_family.get_member(id)
     if  response is None: 
-      raise APIException("Not found", status_code=400)
+        raise APIException("Not found", status_code=400)
     return jsonify({"family": jackson_family.get_member(id)}), 200    
 
- 
+
 
 @app.route('/members', methods=['POST'])
 def add_member():
@@ -80,10 +80,10 @@ def add_member():
 
 @app.route('/members/<int:id>', methods=['DELETE'])
 def delete_member(id):
-   
+
     response = jackson_family.get_member(id)
     if  response is None: 
-      raise APIException("Not found", status_code=400)
+        raise APIException("Not found", status_code=400)
     
     jackson_family.delete_member(id)
     return jsonify({"family":jackson_family.get_all_members()}), 200    
